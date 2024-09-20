@@ -1,0 +1,35 @@
+FROM dorowu/ubuntu-desktop-lxde-vnc:focal-arm64
+
+RUN apt-get update && apt-get install -y wget gpg-agent
+
+# Add the GPG key for the Google Chrome repository
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+
+# Update the package lists and install Python 3.8, Python3-pip, curl, and other necessary tools
+RUN apt-get update && apt-get install -y software-properties-common
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt-get update && apt-get install -y python3.8 python3-pip python3.8-dev python3.8-distutils unzip nano curl libgraphviz-dev
+
+# Update pip for Python 3.8
+RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.8
+
+# Install the fuzzingbook package
+RUN python3.8 -m pip install fuzzingbook jupyterlab gcovr matplotlib markdown graphviz
+
+# Downgrade jinja to display the GUI of the containter
+RUN python3.8 -m pip install 'jinja2<3.1.0'
+
+# Create a directory where you want to store your data
+RUN mkdir /data
+
+# Add the system folder to the root directory
+ADD system /root/system
+
+# Set the working directory
+WORKDIR /root/system
+
+# Execute the makefile
+RUN cd /root/system && make clean && make
+
+# Expose port 80
+EXPOSE 80
