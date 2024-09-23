@@ -134,7 +134,7 @@ Based on the results from Tasks 1-2, select the best approach for conducting lar
 
 The provided fuzzers do not implement the bug detector component yet. If you use them, ensure you add that feature by checking the output of SQLite. To detect more types of bugs, you can consider using sanitizers like [AddressSanitizer](https://clang.llvm.org/docs/AddressSanitizer.html) and [MemorySanitizer](https://clang.llvm.org/docs/MemorySanitizer.html), which require some updates to the [Makefile](system/Makefile).
 
-To make this task both interesting and achievable, we provide you with an older version of SQLite (specifically version 3.31), which contains several known vulnerabilities. You are expected to automatically discover six of these vulnerabilities to receive full marks (1.5 * 6 = 9 marks) for this task, even without discovering zero-day vulnerabilities.
+To make this task both interesting and achievable, we provide you with an older version of SQLite (specifically version 3.31), which contains several known vulnerabilities. You are expected to automatically discover four of these vulnerabilities to receive full marks (1.5 * 4 = 6 marks) for this task, even without discovering zero-day vulnerabilities.
 
 For a more challenging task, you can download **the latest version of SQLite** from [this page](https://www.sqlite.org/download.html), extract the files, and replace the old SQL source code in the `system` directory. If you discover zero-day vulnerabilities through fuzzing, you need to submit them to Thuan ([`thuan.pham@unimelb.edu.au`](mailto:thuan.pham@unimelb.edu.au)), including the group information, the bug-triggering input, and the instructions to reproduce it. Thuan and the teaching team will triage your submission and report the bug to the SQLite maintainers on behalf of your team. If a vulnerability is confirmed by the maintainers, the first team that discovers and submits the vulnerability to Thuan will earn 3 marks for each vulnerability. Duplicate submissions will not receive any marks. We will make the details of all bug reports submitted to the SQLite team, along with their status (confirmed or not), available at [https://github.com/swen90006-2024/assignment-2-bug-reports](https://github.com/swen90006-2024/assignment-2-bug-reports). This could help you avoid duplicate submissions and focus on discovering new vulnerabilities. It could also help manage the volume of emails sent to Thuan.
 
@@ -167,10 +167,10 @@ The assignment is worth 25% of your final mark. Following is the general marking
 
 | Criterion  | Description  | Highest Marks  |
 |---|---|---|
-| Good SQL grammar | The grammar is well-structured and complete enough to achieve good coverage. You will receive zero marks for this task if your achieved branch coverage is lower than 20%.  | 5 |
-| Good seed corpus | The seed corpus is selected rationally that improves branch coverage. You will receive zero marks for this task if your achieved branch coverage with mutation-based fuzzing is lower than 25%. | 2 |
-| Correctly implemented mutation operators | The mutation operators are substantially different from each other and different from the existing operators. Moreover, in the final report, you should explain your rationale behind the decision and analyze the results after adding them. | 5 |
-| Vulnerabilitis discovered | 1.5 marks for each known vulnerability and 3 marks for each eligible zero-day vulnerability. The marks for this task are capped at 15, ensuring you put enough effort into the other tasks. | 9 + 6 |
+| Good SQL grammar | The grammar is well-structured and complete enough to achieve good coverage. You will receive zero marks for this task if your achieved branch coverage is lower than 20%.  | 6 |
+| Good seed corpus | The seed corpus is selected rationally that improves branch coverage. You will receive zero marks for this task if your achieved branch coverage with mutation-based fuzzing is lower than 25%. | 3 |
+| Correctly implemented mutation operators | The mutation operators are substantially different from each other and different from the existing operators. Moreover, in the final report, you should explain your rationale behind the decision and analyze the results after adding them. | 6 |
+| Vulnerabilitis discovered | 1.5 marks for each known vulnerability and 3 marks for each eligible zero-day vulnerability. The marks for this task are capped at 12, ensuring you put enough effort into the other tasks. | 6 + 6 |
 | Final report & reflections | Clear demonstration of understanding of the topics used in the assignment, presented in a logical manner.  | 4 |
 | **Capped Total** | | 25 |
 
