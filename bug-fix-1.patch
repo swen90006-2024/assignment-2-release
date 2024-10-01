@@ -1,0 +1,29 @@
+diff --git a/system/mutation_fuzzer.py b/system/mutation_fuzzer.py
+index 3e8a376..fa1ad7d 100644
+--- a/system/mutation_fuzzer.py
++++ b/system/mutation_fuzzer.py
+@@ -81,7 +81,7 @@ class MyMutationFuzzer(Fuzzer):
+ 
+     def add_seed(self, seed: str) -> None:
+         self.population.append(seed)
+-        print("Thuan new seed has been added to the corpus")
++        print("new seed has been added to the corpus")
+ 
+     def fuzz(self) -> str:
+         if self.seed_index < len(self.seed):
+diff --git a/system/run_experiment.py b/system/run_experiment.py
+index 5a44a96..7db5c6a 100644
+--- a/system/run_experiment.py
++++ b/system/run_experiment.py
+@@ -61,10 +61,7 @@ class Experiment:
+                 print(f'[ERROR] Mutation fuzzing requires a non-empty seed corpus')
+                 exit()
+                     
+-            if feedback_enabled:
+-                self.fuzzer = MyMutationCoverageFuzzer(seeds)
+-            else:
+-                self.fuzzer = MyMutationFuzzer(seeds)   
++            self.fuzzer = MyMutationFuzzer(seeds)
+         else:
+             print(f"[ERROR] The specified fuzzer type '{fuzzer_type}' is not support")
+             exit()

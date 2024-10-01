@@ -61,10 +61,7 @@ class Experiment:
                 print(f'[ERROR] Mutation fuzzing requires a non-empty seed corpus')
                 exit()
                     
-            if feedback_enabled:
-                self.fuzzer = MyMutationCoverageFuzzer(seeds)
-            else:
-                self.fuzzer = MyMutationFuzzer(seeds)   
+            self.fuzzer = MyMutationFuzzer(seeds)
         else:
             print(f"[ERROR] The specified fuzzer type '{fuzzer_type}' is not support")
             exit()

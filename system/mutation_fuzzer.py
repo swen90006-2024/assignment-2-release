@@ -81,7 +81,7 @@ class MyMutationFuzzer(Fuzzer):
 
     def add_seed(self, seed: str) -> None:
         self.population.append(seed)
-        print("Thuan new seed has been added to the corpus")
+        print("new seed has been added to the corpus")
 
     def fuzz(self) -> str:
         if self.seed_index < len(self.seed):
