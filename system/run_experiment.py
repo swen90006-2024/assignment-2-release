@@ -36,7 +36,7 @@ def remove_file_if_exists(file_path):
 
 # Main experiment class that support all type of fuzzers
 class Experiment:
-    def __init__(self, fuzzer_type, corpus_path = None, db_file = "empty.db", feedback_enabled = False, clean_database = False):
+    def __init__(self, fuzzer_type, db_file, corpus_path = None, feedback_enabled = False, clean_database = False):
         if fuzzer_type == "grammar_based":
             self.fuzzer = MyGrammarFuzzer()
         elif fuzzer_type == "mutation_based":
@@ -66,6 +66,9 @@ class Experiment:
             print(f"[ERROR] The specified fuzzer type '{fuzzer_type}' is not support")
             exit()
             
+        if db_file == None:
+            db_file = "empty.db"
+
         self.db_file = db_file
         self.sqlite3 = self.find_sqlite3_executable()
         self.feedback_enabled = feedback_enabled
@@ -179,7 +182,7 @@ def main():
     if feedback_enabled:
         plot_every_x = 1
 
-    experiment = Experiment(fuzzer_type, corpus, db_file, feedback_enabled, clean_database)
+    experiment = Experiment(fuzzer_type, db_file, corpus, feedback_enabled, clean_database)
     experiment.generate_and_run_k_plot_coverage(runs, plot_every_x)
 
 if __name__ == "__main__":

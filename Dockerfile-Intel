@@ -6,7 +6,7 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 # Update the package lists and install Python 3.10, Python3-pip, curl, and other necessary tools
 RUN apt-get update && apt-get install -y software-properties-common
 RUN add-apt-repository ppa:deadsnakes/ppa
-RUN apt-get update && apt-get install -y python3.10 python3-pip python3.10-dev python3.10-distutils unzip nano curl libgraphviz-dev
+RUN apt-get update && apt-get install -y clang python3.10 python3-pip python3.10-dev python3.10-distutils unzip nano curl libgraphviz-dev
 
 # Update pip for Python 3.10
 RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10

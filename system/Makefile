@@ -7,6 +7,9 @@ all: sqlite3
 sqlite3: shell.c sqlite3.c
 	$(CC) $(CFLAGS) $^ $(LIBS) -o $@
 
+sqlite3-asan: shell.c sqlite3.c
+	clang -fsanitize=address -g $^ $(LIBS) -o sqlite3-asan
+
 coverage-html:
 	gcovr --html --html-details -o coverage_report.html
 
