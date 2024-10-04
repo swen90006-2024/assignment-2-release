@@ -1,9 +1,9 @@
 Group Number:
 
 Member-1:
-- Name:
-- Student ID:
-- Email:
+- Name: shuran yang
+- Student ID: 1442618
+- Email: shurany2@student.unimelb.edu.au
 
 Member-2:
 - Name:
